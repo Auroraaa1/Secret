@@ -12,10 +12,23 @@ function sayYes() {
 
 function moveButton() {
     const button = document.querySelector('.no');
-    button.style.position = "absolute";
-    button.style.top = Math.random() * window.innerHeight + "px";
-    button.style.left = Math.random() * window.innerWidth + "px";
+
+    const buttonWidth = button.offsetWidth;
+    const buttonHeight = button.offsetHeight;
+
+    const padding = 20; // space from edges
+
+    const maxX = window.innerWidth - buttonWidth - padding;
+    const maxY = window.innerHeight - buttonHeight - padding;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    button.style.position = "fixed"; // better for mobile
+    button.style.left = randomX + "px";
+    button.style.top = randomY + "px";
 }
+
 
 function playMusic() {
     const music = document.getElementById("bgMusic");
@@ -26,3 +39,4 @@ function playMusic() {
     music.volume = 0.2; // 0 = silent, 1 = full volume
     music.play();
 }
+Math.random() * window.innerHeight
